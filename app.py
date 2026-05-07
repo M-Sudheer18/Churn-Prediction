@@ -1,15 +1,18 @@
 import streamlit as st
 import numpy as np
 import pickle as pic
+from huggingface_hub import hf_hub_download
 
 st.title("Churn Prediction")
 st.subheader("Enter Details")
 
 # Model 
-model = pic.load(
-    open("Model_churn.pkl", "rb")
+model_path = hf_hub_download(
+    repo_id="Sudheer17/Churn_Model",
+    filename="Model_churn.pkl"
 )
 
+model = pic.load(open(model_path, "rb"))
 # Inputs
 # ---------
 # ['Gender',
