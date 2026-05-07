@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle as pic
+import joblib
 from huggingface_hub import hf_hub_download
 
 st.title("Churn Prediction")
@@ -12,7 +13,8 @@ model_path = hf_hub_download(
     filename="Model_churn.pkl"
 )
 
-model = pic.load(open(model_path, "rb"))
+
+model = joblib.load(model_path)
 # Inputs
 # ---------
 # ['Gender',
